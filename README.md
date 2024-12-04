@@ -15,6 +15,7 @@ Provisioning with Terraform to deploy a High Availability Kubernetes cluster usi
    ```sh
    export TF_VAR_url=<MAAS-URL>
    export TF_VAR_key=<API-KEY-4-MAAS>
+   export TF_VAR_hostname_prefix=<KVM-HOST>
    ```
 
 3. **Plan the deployment:**
@@ -31,7 +32,7 @@ Provisioning with Terraform to deploy a High Availability Kubernetes cluster usi
 
 ## Configuration
 
-- **cloud_init_k0s.yaml:** Cloud-init configuration for K0s setup.
+- **cloud_init_k0s.tpl:** Cloud-init template configuration for K0s setup.
 - **main.tf:** Main Terraform configuration file.
 - **provider.tf:** Provider configuration for Terraform.
 - **variables.tf:** Variable definitions for Terraform.
@@ -48,7 +49,7 @@ To change the nodes, follow these steps:
    ```
 
    Note: If you want to disable the additional controller, comment out the resource block for k8s_controller.
-2. Modify the Cloud-init configuration to match the updated node counts. `cloud_init_k0s.yaml`
+2. Modify the Cloud-init configuration to match the updated node counts. `cloud_init_k0s.tpl`
 
 ## Disclaimer
 

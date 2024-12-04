@@ -1,3 +1,4 @@
+
 #cloud-config
 package_update: true
 package_upgrade: true
@@ -22,35 +23,35 @@ write_files:
       apiVersion: k0sctl.k0sproject.io/v1beta1
       kind: Cluster
       metadata:
-        name: cloud-hf-24
+        name: ${hostname_prefix}
       spec:
         hosts:
         - ssh:
-            address: cloud-hf-24-c1
+            address: ${hostname_prefix}-c1
             user: ubuntu
             port: 22
             keyPath: /opt/id_lerncloud
           role: controller
         - ssh:
-            address: cloud-hf-24-c2
+            address: ${hostname_prefix}-c2
             user: ubuntu
             port: 22
             keyPath: /opt/id_lerncloud
           role: controller
         - ssh:
-            address: cloud-hf-24-w1
+            address: ${hostname_prefix}-w1
             user: ubuntu
             port: 22
             keyPath: /opt/id_lerncloud
           role: worker
         - ssh:
-            address: cloud-hf-24-w2
+            address: ${hostname_prefix}-w2
             user: ubuntu
             port: 22
             keyPath: /opt/id_lerncloud
           role: worker
         - ssh:
-            address: cloud-hf-24-w3
+            address: ${hostname_prefix}-w3
             user: ubuntu
             port: 22
             keyPath: /opt/id_lerncloud

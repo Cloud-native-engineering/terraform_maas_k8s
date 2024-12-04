@@ -8,3 +8,9 @@ variable "key" {
   type        = string
   sensitive   = true
 }
+
+variable "hostname_prefix" {
+  description = "Prefix for the hostnames / KVM-hostname"
+  type        = string
+  default     = "cloud-hf-24"
+}

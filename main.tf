@@ -1,5 +1,5 @@
 locals {
-  worker_instances_count     = 3
+  worker_instances_count     = 5
   controller_instances_count = 2
 
   worker_instances_list     = [for i in range(1, local.worker_instances_count + 1) : i]
@@ -9,7 +9,10 @@ locals {
   controller_instances_map = zipmap(local.controller_instances_list, local.controller_instances_list)
 
   cloud_init_k0s = templatefile("${path.module}/cloud_init_k0s.yaml.tftpl", {
-    hostname_prefix = var.hostname_prefix
+    hostname_prefix         = var.hostname_prefix,
+    initial_controller_host = "${var.hostname_prefix}-c1",
+    controller_hosts        = [for i in local.controller_instances_list : "${var.hostname_prefix}-c${i}"],
+    worker_hosts            = [for i in local.worker_instances_list : "${var.hostname_prefix}-w${i}"]
   })
 }
 

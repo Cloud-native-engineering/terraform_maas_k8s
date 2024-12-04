@@ -30,9 +30,15 @@ Provisioning with Terraform to deploy a High Availability Kubernetes cluster usi
    terraform apply
    ```
 
+5. **Destroy the deployment:**
+
+   ```sh
+   terraform destroy
+   ```
+
 ## Configuration
 
-- **cloud_init_k0s.tpl:** Cloud-init template configuration for K0s setup.
+- **cloud_init_k0s.tftpl:** Cloud-init template configuration for K0s setup.
 - **main.tf:** Main Terraform configuration file.
 - **provider.tf:** Provider configuration for Terraform.
 - **variables.tf:** Variable definitions for Terraform.
@@ -48,8 +54,7 @@ To change the nodes, follow these steps:
    controller_instances_count = 2
    ```
 
-   Note: If you want to disable the additional controller, comment out the resource block for k8s_controller.
-2. Modify the Cloud-init configuration to match the updated node counts. `cloud_init_k0s.tpl`
+> Yes really that's all you need to do...
 
 ## Disclaimer
 

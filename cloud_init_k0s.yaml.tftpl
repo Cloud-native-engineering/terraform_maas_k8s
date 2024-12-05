@@ -22,11 +22,11 @@ write_files:
       apiVersion: k0sctl.k0sproject.io/v1beta1
       kind: Cluster
       metadata:
-        name: cloud-hf-08
+        name: ${hostname_prefix}
       spec:
         hosts:
         - ssh:
-            address: cloud-hf-08-c1
+            address: ${initial_controller_host}
             user: ubuntu
             port: 22
             keyPath: /opt/id_lerncloud
